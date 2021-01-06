@@ -23,8 +23,17 @@ const multiple = animals.filter(animal => animal.includes(' '));
 console.log(multiple);
 
 //map
+const multipleOfTwo = numbers.map(number => number * 2);
+console.log(multipleOfTwo);
 
+const alienAnimals = animals.map(animal => {
+    let split = animal.split("");
+    let reverse = split.reverse();
+    let finish = reverse.join("");
+    console.log(finish);
+});
 
+console.log(alienAnimals);
 //sort
 
 //reduce
