@@ -2,7 +2,9 @@ let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 let animals = ['dog', 'bird', 'lion', 'deer', 'gorilla', 'leopard', 'guinea pig'];
 
 // ForEach
-
+numbers.forEach(number => function {
+    console.log(number)
+});
 //filter
 
 //map
