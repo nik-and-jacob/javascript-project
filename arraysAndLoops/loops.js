@@ -9,9 +9,21 @@ numbers.forEach((number) => {
 animals.forEach((animal) => {
     console.log(animal);
 })
+
 //filter
+const evenNumbers = numbers.filter(number => number % 2 === 0);
+const oddNumbers = numbers.filter(number => number % 2 === 1);
+console.log(evenNumbers);
+console.log(oddNumbers);
+
+const critters = animals.filter(animal => animal.length <= 4);
+console.log(critters);
+
+const multiple = animals.filter(animal => animal.includes(' '));
+console.log(multiple);
 
 //map
+
 
 //sort
 
