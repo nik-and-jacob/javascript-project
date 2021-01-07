@@ -26,12 +26,7 @@ console.log(multiple);
 const multipleOfTwo = numbers.map(number => number * 2);
 console.log(multipleOfTwo);
 
-const alienAnimals = animals.map(animal => {
-    let split = animal.split("");
-    let reverse = split.reverse();
-    let finish = reverse.join("");
-    console.log(finish);
-});
+const alienAnimals = animals.map(animal => animal = animal.split("").reverse().join("").toString());
 
 console.log(alienAnimals);
 //sort
