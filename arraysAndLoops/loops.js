@@ -30,8 +30,17 @@ const alienAnimals = animals.map(animal => animal = animal.split("").reverse().j
 
 
 //sort
+const sortedAnimals = animals.sort();
+console.log(sortedAnimals);
+
+const numbersSorted = numbers.sort();
+console.log(numbersSorted);
 
 //reduce
+const reduction = numbers.reduce((total, number) => {
+    return total + number;
+})
+console.log(reduction);
 
 //for..of
 
