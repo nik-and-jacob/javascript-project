@@ -28,7 +28,7 @@ console.log(multipleOfTwo);
 
 const alienAnimals = animals.map(animal => animal = animal.split("").reverse().join("").toString());
 
-console.log(alienAnimals);
+
 //sort
 
 //reduce
