@@ -83,6 +83,7 @@ console.log(firstWithMoreThanFourLetters);
 
 const findCritter = animals.findIndex((e) => e === 'guinea pig');
 console.log(findCritter);
+
 //some
 
 //every

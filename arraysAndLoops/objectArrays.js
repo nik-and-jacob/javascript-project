@@ -17,5 +17,14 @@ for(let i = 0; i < People.length; i++){
     }
     console.log(`${People[i].name} is a ${gender}, he ${People[i].age} years old, and is ${People[i].height} in height`)
 }
-
+console.clear();
 // forEach loop through the array displaying the text such as: "Jacob is a Male, he 25 years old, and is 5'11 in height"
+
+const body = document.querySelector('body')
+body.innerHTML += People.forEach(people => whoItIz(people));
+
+function whoItIz(e) {
+    const person = e;
+    const HTML = `${person.name} is a ${person.Gender === 'M' ? 'Male' : 'Female' }, he ${person.age} years old, and is ${person.height} in height`;
+    return HTML;
+}
