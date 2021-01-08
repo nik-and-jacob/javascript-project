@@ -8,6 +8,14 @@ let People = [
 ];
 
 // for loop through the array displaying the text such as: "Jacob is a Male, he 25 years old, and is 5'11 in height"
-
+for(let i = 0; i < People.length; i++){
+    if(People[i].Gender == 'M'){
+        var gender = 'Male';
+    }
+    if(People[i].Gender == 'F'){
+        var gender = 'Female';
+    }
+    console.log(`${People[i].name} is a ${gender}, he ${People[i].age} years old, and is ${People[i].height} in height`)
+}
 
 // forEach loop through the array displaying the text such as: "Jacob is a Male, he 25 years old, and is 5'11 in height"
