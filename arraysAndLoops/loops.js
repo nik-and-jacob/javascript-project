@@ -67,6 +67,9 @@ for (const property in object) {
     console.log(`${property}: ${object[property]}`);
 };
 
+for (let ob in Object.values(object)) {
+    console.log(ob);
+}
 //find
 // The find() method returns the value of the first element in the provided
 // array that satisfies the provided testing function. If no values satisfies
@@ -78,9 +81,11 @@ const firstWithMoreThanFourLetters = animals.find(animal => animal.length > 4);
 console.log(firstWithMoreThanFourLetters);
 //findIndex
 
-//every
-
+const findCritter = animals.findIndex((e) => e === 'guinea pig');
+console.log(findCritter);
 //some
+
+//every
 
 //entries/ fromEntries
 
