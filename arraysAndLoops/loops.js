@@ -83,12 +83,27 @@ console.log(firstWithMoreThanFourLetters);
 
 const findCritter = animals.findIndex((e) => e === 'guinea pig');
 console.log(findCritter);
-
 //some
+const containsDog = animals.some(e => e === 'dog');
+const containsCat = animals.some(e => e === 'cat');
+console.log(containsDog);
+console.log(containsCat);
 
 //every
+const isANumber = numbers.every(e => {
+    if(typeof(e) === 'number') return true;
+    else return false;
+});
+console.log(isANumber);
 
 //entries/ fromEntries
+
+const keyValues = animals.entries();
+console.log(keyValues.next().value);
+console.log(keyValues.next().value);
+
+const fromKeys = Object.fromEntries(keyValues);
+console.log(fromKeys);
 
 //includes
 
