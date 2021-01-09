@@ -8,16 +8,16 @@ let People = [
 ];
 
 // for loop through the array displaying the text such as: "Jacob is a Male, he 25 years old, and is 5'11 in height"
+
+let forLoopText = "";
 for(let i = 0; i < People.length; i++){
-    if(People[i].Gender == 'M'){
-        var gender = 'Male';
-    }
-    if(People[i].Gender == 'F'){
-        var gender = 'Female';
-    }
-    console.log(`${People[i].name} is a ${gender}, he ${People[i].age} years old, and is ${People[i].height} in height`)
+    var gender = People[i].Gender === 'M' ? 'Male' : 'Female'
+    var secondGender = People[i].Gender === 'M' ? 'he' : 'she'
+    forLoopText += `<li>${People[i].name} is a ${gender}, ${secondGender} is ${People[i].age} years old, and is ${People[i].height} in height</li>`;
+
 }
-console.clear();
+
+document.getElementById('forLoop').innerHTML = forLoopText
 // forEach loop through the array displaying the text such as: "Jacob is a Male, he 25 years old, and is 5'11 in height"
 
 const body = document.querySelector('body')
