@@ -9,11 +9,11 @@ let People = [
 
 // for loop through the array displaying the text such as: "Jacob is a Male, he 25 years old, and is 5'11 in height"
 
-let forLoopText;
+let forLoopText = "";
 for(let i = 0; i < People.length; i++){
     var gender = People[i].Gender === 'M' ? 'Male' : 'Female'
-
-    forLoopText += `<li>${People[i].name} is a ${gender}, he ${People[i].age} years old, and is ${People[i].height} in height</li>`;
+    var secondGender = People[i].Gender === 'M' ? 'he' : 'she'
+    forLoopText += `<li>${People[i].name} is a ${gender}, ${secondGender} is ${People[i].age} years old, and is ${People[i].height} in height</li>`;
 
 }
 
