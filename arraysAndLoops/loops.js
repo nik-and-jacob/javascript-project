@@ -94,10 +94,16 @@ const isANumber = numbers.every(e => {
     if(typeof(e) === 'number') return true;
     else return false;
 });
-
 console.log(isANumber);
 
 //entries/ fromEntries
+
+const keyValues = animals.entries();
+console.log(keyValues.next().value);
+console.log(keyValues.next().value);
+
+const fromKeys = Object.fromEntries(keyValues);
+console.log(fromKeys);
 
 //includes
 
