@@ -9,6 +9,11 @@ let people = [
 
 // for loop through the array displaying the text such as: "Jacob is a Male, he 25 years old, and is 5'11 in height"
 
+let forLoopText = "";
+for(let i = 0; i < People.length; i++){
+    var gender = People[i].Gender === 'M' ? 'Male' : 'Female'
+    var secondGender = People[i].Gender === 'M' ? 'he' : 'she'
+    forLoopText += `<li>${People[i].name} is a ${gender}, ${secondGender} is ${People[i].age} years old, and is ${People[i].height} in height</li>`;
 
 // forEach loop through the array displaying the text such as: "Jacob is a Male, he 25 years old, and is 5'11 in height"
 let html = '';
@@ -29,3 +34,4 @@ const string = `<h1>Please, let this work</h1><p> -thanks.</p>`;
 div.insertAdjacentHTML("afterbegin", string);
 
 people.forEach(person => peopleCards(person.name, person.age, person.height,  person.gender));
+}
