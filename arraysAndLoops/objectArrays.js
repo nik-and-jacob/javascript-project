@@ -11,19 +11,21 @@ let people = [
 
 
 // forEach loop through the array displaying the text such as: "Jacob is a Male, he 25 years old, and is 5'11 in height"
+let html = '';
 
-function peopleCards() {
-    const peeps = people;
-    const html = `<div class="peopleCard">
-    <h2>${peeps.name} — ${peeps.age}</h2>
-    <p>They are ${peeps.height}" tall and ${peeps.gender === 'M' ? 'ale' : 'Female'}</p>
-    <button class="delete"><i class="bi bi-emoji-dizzy"></i Delete</button>
+function peopleCards(name, age, height, gender) {
+    html += `<div class="card">
+    <h2>${name} — ${age}</h2>
+    <p>They are ${height}" tall and ${gender === 'M' ? 'Male' : 'Female'}</p>
+    <button class="delete">X Delete</button>
      </div>`;
+    div.insertAdjacentHTML("afterbegin", html);
 }
-console.log(peopleCards({people}));
 
 const div = document.createElement('div');
 document.body.append(div);
 div.classList.add('wrapper')
 const string = `<h1>Please, let this work</h1><p> -thanks.</p>`;
 div.insertAdjacentHTML("afterbegin", string);
+
+people.forEach(person => peopleCards(person.name, person.age, person.height,  person.gender));
