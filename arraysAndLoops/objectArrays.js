@@ -9,6 +9,11 @@ let people = [
 
 // for loop through the array displaying the text such as: "Jacob is a Male, he 25 years old, and is 5'11 in height"
 
+let forLoopText = "";
+for(let i = 0; i < people.length; i++){
+    var gender = people[i].Gender === 'M' ? 'Male' : 'Female'
+    var secondGender = people[i].Gender === 'M' ? 'he' : 'she'
+    forLoopText += `<li>${people[i].name} is a ${gender}, ${secondGender} is ${people[i].age} years old, and is ${people[i].height} in height</li>`;
 
 // forEach loop through the array displaying the text such as: "Jacob is a Male, he 25 years old, and is 5'11 in height"
 let html = '';
@@ -30,6 +35,7 @@ div.insertAdjacentHTML("afterbegin", string);
 
 people.forEach(person => peopleCards(person.name, person.age, person.height,  person.gender));
 
+
 const buttons = document.querySelectorAll('.delete');
 
 function deleteCard(event) {
@@ -39,3 +45,4 @@ function deleteCard(event) {
 }
 
 buttons.forEach(button => button.addEventListener('click', deleteCard));
+}
