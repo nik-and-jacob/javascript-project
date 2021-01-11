@@ -14,7 +14,7 @@ let people = [
 let html = '';
 
 function peopleCards(name, age, height, gender) {
-    html += `<div class="card">
+    html = `<div class="card">
     <h2>${name} — ${age}</h2>
     <p>They are ${height}" tall and ${gender === 'M' ? 'Male' : 'Female'}</p>
     <button class="delete">X Delete</button>
@@ -29,3 +29,13 @@ const string = `<h1>Please, let this work</h1><p> -thanks.</p>`;
 div.insertAdjacentHTML("afterbegin", string);
 
 people.forEach(person => peopleCards(person.name, person.age, person.height,  person.gender));
+
+const buttons = document.querySelectorAll('.delete');
+
+function deleteCard(event) {
+    console.log(this.parentElement);
+    const buttonClicked = event.currentTarget;
+    buttonClicked.parentElement.remove();
+}
+
+buttons.forEach(button => button.addEventListener('click', deleteCard));
