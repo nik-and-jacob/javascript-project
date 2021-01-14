@@ -9,20 +9,21 @@ const rightBtn = document.getElementById('nav-button-horizontal-right'); // righ
 const leftBtn = document.getElementById('nav-button-horizontal-left'); // right d-pad button 
 
 
+// Find which keys to use and display
 let currentId = 1;
 const catchemAll = pokemon => {
 fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then( res => res.json()).then( data => {
+    let id = ('00' + data.id).slice(-3);
     currentId = data.id;
-    console.log(data)
+    imageScreen.style.backgroundImage = `url('https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png')`;
 });
 }
+
 catchemAll(currentId);
 
 searchBtn.addEventListener("click", () => catchemAll(inputField.value));
 
-// Find which keys to use and display**
 
-// Grab D-Pad to increment/decrement through Pokemon List
 var song = new Audio();
 song.src = 'audio/press.wav';
 
@@ -52,6 +53,5 @@ const decrementPoke = () => {
 rightBtn.addEventListener("click", () => incrementPoke());
 leftBtn.addEventListener("click", () => decrementPoke());
 
-// Add sound 
-
 // Think of Animations
+
