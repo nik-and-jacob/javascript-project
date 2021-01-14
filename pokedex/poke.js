@@ -11,4 +11,15 @@ const catchemAll = pokemon => {
 fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then( res => res.json()).then( data => console.log(data));
 }
 
-searchBtn.addEventListener('click', catchemAll(inputField.value));
+// searchBtn.addEventListener('click', catchemAll(inputField.value));
+
+searchBtn.addEventListener("click", () => catchemAll(inputField.value));
+console.log('TODO');
+
+// Find which keys to use and display**
+
+// Grab D-Pad to increment/decrement through Pokemon List
+
+// Add sound 
+
+// Think of Animations
