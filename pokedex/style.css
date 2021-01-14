@@ -420,13 +420,28 @@
     border: 2px solid black;
   }
   
-  .nav-button-horizontal {
+  #nav-button-horizontal-left {
     position: absolute;
     background-color: var(--main-buttons-color);
-    border-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
     height: 12px;
-    width: 52px;
+    width: 26px;
     border: 2px solid black;
+    border-right: 0px;
+    margin-right: 26px;
+  }
+
+  #nav-button-horizontal-right {
+    position: absolute;
+    background-color: var(--main-buttons-color);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 12px;
+    width: 26px;
+    border: 2px solid black;
+    border-left: 0px;
+    margin-left: 26px;
   }
   
   .nav-center-circle {
