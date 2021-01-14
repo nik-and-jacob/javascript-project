@@ -13,23 +13,21 @@ let currentId = 1;
 const catchemAll = pokemon => {
 fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then( res => res.json()).then( data => {
     currentId = data.id;
-     console.log(data)
+    console.log(data)
 });
 }
 catchemAll(currentId);
 
-// searchBtn.addEventListener('click', catchemAll(inputField.value));
-
 searchBtn.addEventListener("click", () => catchemAll(inputField.value));
-console.log('TODO');
 
 // Find which keys to use and display**
 
 // Grab D-Pad to increment/decrement through Pokemon List
 var song = new Audio();
-var error = new Audio();
 song.src = 'audio/press.wav';
-error.src = 'audio/Teleport.wav'
+
+var errorSound = new Audio();
+errorSound.src = 'audio/error.wav';
 
 const clickSound = (song) => {
     song.currentTime = 0;
@@ -42,12 +40,12 @@ const incrementPoke = () => {
 }
 
 const decrementPoke = () => {
-    if(currentId <= 1){
-        clickSound(error);
-        return
+    if(currentId === 1){
+        clickSound(errorSound);
+        catchemAll(1)
     }else{
         clickSound(song);
-    catchemAll(currentId - 1);
+        catchemAll(currentId - 1)
     }
 };
 
