@@ -29,7 +29,15 @@ console.log('TODO');
 var song = new Audio();
 song.src = 'audio/press.wav';
 
+var errorSound = new Audio();
+errorSound.src - 'audio/error.wav';
+
 const clickSound = (song) => {
+    song.currentTime = 0;
+    song.play();
+}
+
+const clickError = (song) => {
     song.currentTime = 0;
     song.play();
 }
@@ -40,8 +48,14 @@ const incrementPoke = () => {
 }
 
 const decrementPoke = () => {
+    if (currentId === 1) {
+        // TODO - fix audio
+        clickError(errorSound);
+        console.log(`you can't go backwards.`)
+    } else {
     clickSound(song);
     catchemAll(currentId - 1);
+    }
 };
 
 rightBtn.addEventListener("click", () => incrementPoke());
