@@ -27,7 +27,9 @@ console.log('TODO');
 
 // Grab D-Pad to increment/decrement through Pokemon List
 var song = new Audio();
+var error = new Audio();
 song.src = 'audio/press.wav';
+error.src = 'audio/Teleport.wav'
 
 const clickSound = (song) => {
     song.currentTime = 0;
@@ -40,8 +42,13 @@ const incrementPoke = () => {
 }
 
 const decrementPoke = () => {
-    clickSound(song);
+    if(currentId <= 1){
+        clickSound(error);
+        return
+    }else{
+        clickSound(song);
     catchemAll(currentId - 1);
+    }
 };
 
 rightBtn.addEventListener("click", () => incrementPoke());
