@@ -366,6 +366,15 @@
     margin-right: 3px;
     margin-top: 10px;
   }
+
+  #mute-text {
+    width: 100%;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    font-size: 8.5px;
+    margin-left: 7px;
+    overflow-wrap: break-word;
+  }
   
   .long-button {
     width: 35px;
