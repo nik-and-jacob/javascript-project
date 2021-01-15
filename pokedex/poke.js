@@ -8,6 +8,7 @@ const idScreen = document.getElementById('id-screen'); // spices screen
 const rightBtn = document.getElementById('nav-button-horizontal-right'); // right d-pad button 
 const leftBtn = document.getElementById('nav-button-horizontal-left'); // left d-pad button 
 const muteBtn = document.getElementById('mute-button'); // mute button 
+const muteLight = document.getElementById('mute-light'); // mute light 
 
 
 // Find which keys to use and display
@@ -32,7 +33,7 @@ song.volume = 0.05;
 
 var errorSound = new Audio();
 errorSound.src = 'audio/error.wav';
-errorSound.volume = 0.07;
+errorSound.volume = 0.09;
 
 const clickSound = (song) => {
     song.currentTime = 0;
@@ -61,16 +62,22 @@ leftBtn.addEventListener("click", () => decrementPoke());
 const mute = (sound1, sound2) => {
     sound1.muted = true;
     sound2.muted = true;
-    }
-    const unmute = (sound1, sound2) => {
+};
+
+const unmute = (sound1, sound2) => {
         sound1.muted = false;
         sound2.muted = false;
-        }
+};
+
 muteBtn.addEventListener("click", () => {
     if(song.muted === true || errorSound.muted === true){
         unmute(song, errorSound);
+        muteLight.classList.add('light-red');
+        muteLight.classList.remove('red')
     }else{
         mute(song, errorSound);
+        muteLight.classList.add('red');
+        muteLight.classList.remove('light-red')
     }
 });
 
