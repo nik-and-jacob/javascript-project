@@ -6,7 +6,8 @@ const aboutScreen = document.getElementById('about-screen'); // about-text scree
 const typeScreen = document.getElementById('type-screen'); // type screen
 const idScreen = document.getElementById('id-screen'); // spices screen
 const rightBtn = document.getElementById('nav-button-horizontal-right'); // right d-pad button 
-const leftBtn = document.getElementById('nav-button-horizontal-left'); // right d-pad button 
+const leftBtn = document.getElementById('nav-button-horizontal-left'); // left d-pad button 
+const muteBtn = document.getElementById('mute-button'); // mute button 
 
 
 // Find which keys to use and display
@@ -15,6 +16,7 @@ const catchemAll = pokemon => {
 fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then( res => res.json()).then( data => {
     let id = ('00' + data.id).slice(-3);
     currentId = data.id;
+    console.log(data);
     imageScreen.style.backgroundImage = `url('https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png')`;
 });
 }
@@ -26,9 +28,11 @@ searchBtn.addEventListener("click", () => catchemAll(inputField.value));
 
 var song = new Audio();
 song.src = 'audio/press.wav';
+song.volume = 0.05;
 
 var errorSound = new Audio();
 errorSound.src = 'audio/error.wav';
+errorSound.volume = 0.07;
 
 const clickSound = (song) => {
     song.currentTime = 0;
@@ -52,6 +56,23 @@ const decrementPoke = () => {
 
 rightBtn.addEventListener("click", () => incrementPoke());
 leftBtn.addEventListener("click", () => decrementPoke());
+
+// MUTE FUNCTIONALITY
+const mute = (sound1, sound2) => {
+    sound1.muted = true;
+    sound2.muted = true;
+    }
+    const unmute = (sound1, sound2) => {
+        sound1.muted = false;
+        sound2.muted = false;
+        }
+muteBtn.addEventListener("click", () => {
+    if(song.muted === true || errorSound.muted === true){
+        unmute(song, errorSound);
+    }else{
+        mute(song, errorSound);
+    }
+});
 
 // Think of Animations
 
