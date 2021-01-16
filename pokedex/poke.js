@@ -10,14 +10,16 @@ const leftBtn = document.getElementById('nav-button-horizontal-left'); // left d
 const muteBtn = document.getElementById('mute-button'); // mute button 
 const muteLight = document.getElementById('mute-light'); // mute light 
 const favoriteButton = document.getElementById('fav-btn');
+const removeButton = document.getElementById('remove-fav');
 const innerModal = document.querySelector('[data-modal="inner"]');
 const outerModal = document.querySelector('[data-modal="outer"]');
-
+const favoriteList = [];
 
 // Find which keys to use and display
 let currentId = 1;
 let currentPokemon;
 let HP;
+let type;
 const catchemAll = (pokemon = 1) => {
 fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then( res => res.json()).then( data => {
     let id = ('00' + data.id).slice(-3);
@@ -46,6 +48,14 @@ var errorSound = new Audio();
 errorSound.src = 'audio/error.wav';
 errorSound.volume = 0.09;
 
+const save = new Audio();
+save.src = 'audio/save.wav';
+save.volume = 0.09;
+
+const toss = new Audio();
+toss.src = 'audio/toss.wav';
+// toss.volume = 0.1;
+
 const clickSound = (song) => {
     song.currentTime = 0;
     song.play();
@@ -58,7 +68,6 @@ const incrementPoke = () => {
     } else
     clickSound(song);
     catchemAll(currentId + 1);
-    typeName(currentPokemon.name);
 }
 
 const decrementPoke = () => {
@@ -97,13 +106,24 @@ muteBtn.addEventListener("click", () => {
     }
 });
 
-function alert(e) {
+// List Favorite Pokemon
+
+function saveFavorite(e) {
+    clickSound(save);
     console.log(`Adding ${currentPokemon.name} to your favorites`);
-    console.log(e);
+    favoriteList.push(currentPokemon.name);
+    console.table(favoriteList);
 }
 
-favoriteButton.addEventListener('click', alert);
+function removeFavorite(e) {
+    clickSound(toss);
+    console.log(`Removing ${currentPokemon.name} from your favorites`);
+    favoriteList.pop(currentPokemon.name);
+    console.table(favoriteList);
+}
 
+favoriteButton.addEventListener('click', saveFavorite);
+removeButton.addEventListener('click', removeFavorite);
 
 // Open Modal
 // innerModal - outerModal
@@ -143,6 +163,24 @@ window.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
         closeModal();
     }
+})
+
+window.addEventListener('keydown', event => {
+
+    if (event.key === 'ArrowRight' && currentId !== 898) {
+        catchemAll(currentId + 1);
+        clickSound(song);
+    } 
+
+    if (event.key === 'ArrowLeft') {
+        catchemAll(currentId - 1);
+        clickSound(song);
+    }
+
+    if (event.key === 'Enter') {
+        catchemAll(inputField.value);
+    }
+
 })
 
 // LocalStorage
