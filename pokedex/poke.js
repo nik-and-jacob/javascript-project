@@ -110,7 +110,7 @@ const handleModal = (event) => {
     innerModal.innerHTML = 
     `<div class="card">
         <div class="card-title">
-            <h1>${currentPokemon.name}</h1>
+            <h1 class="capitalize">${currentPokemon.name}</h1>
             <span>${('00' + currentId).slice(-3)}</span>
         </div>
         <div class="card-body">
