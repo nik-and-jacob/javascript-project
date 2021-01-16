@@ -9,14 +9,21 @@ const rightBtn = document.getElementById('nav-button-horizontal-right'); // righ
 const leftBtn = document.getElementById('nav-button-horizontal-left'); // left d-pad button 
 const muteBtn = document.getElementById('mute-button'); // mute button 
 const muteLight = document.getElementById('mute-light'); // mute light 
+const favoriteButton = document.getElementById('fav-btn');
+const innerModal = document.querySelector('[data-modal="inner"]');
+const outerModal = document.querySelector('[data-modal="outer"]');
 
 
 // Find which keys to use and display
 let currentId = 1;
-const catchemAll = pokemon => {
+let currentPokemon;
+let HP;
+const catchemAll = (pokemon = 1) => {
 fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then( res => res.json()).then( data => {
     let id = ('00' + data.id).slice(-3);
     currentId = data.id;
+    currentPokemon = data;
+    HP = data.base_experience;
     console.log(data);
     imageScreen.style.backgroundImage = `url('https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png')`;
     nameScreen.innerHTML = data.name;
@@ -45,8 +52,13 @@ const clickSound = (song) => {
 }
 
 const incrementPoke = () => {
+    if(currentId === 898){
+        clickSound(errorSound);
+        catchemAll(898)
+    } else
     clickSound(song);
     catchemAll(currentId + 1);
+    typeName(currentPokemon.name);
 }
 
 const decrementPoke = () => {
@@ -85,5 +97,53 @@ muteBtn.addEventListener("click", () => {
     }
 });
 
-// Think of Animations
+function alert(e) {
+    console.log(`Adding ${currentPokemon.name} to your favorites`);
+    console.log(e);
+}
 
+favoriteButton.addEventListener('click', alert);
+
+
+// Open Modal
+// innerModal - outerModal
+
+const handleModal = (event) => {
+    const id = currentId;
+    hp = HP;
+    innerModal.innerHTML = 
+    `<div class="card">
+        <div class="card-title">
+            <h1 class="capitalize">${currentPokemon.name}</h1>
+            <span>${hp} HP</span>
+        </div>
+        <div class="card-body">
+            <div class="img-container">
+                <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/${('00' + id).slice(-3)}.png" alt="A pokemon named: ${currentPokemon.name}">
+            </div>
+        </div>
+    </div>`;
+    outerModal.classList.add('open');
+}
+
+const closeModal = (event) => {
+    outerModal.classList.remove('open');
+}
+
+imageScreen.addEventListener('click', handleModal);
+
+outerModal.addEventListener('click', event => {
+    const isOutside = !event.target.closest('.modal-inner');
+    if (isOutside) {
+    outerModal.classList.remove('open');
+    }
+});
+
+window.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+})
+
+// LocalStorage
+// animate lights

@@ -286,6 +286,7 @@ input {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+  cursor: pointer;
 }
 
 .bottom-screen-lights {
@@ -604,6 +605,8 @@ input {
   border: black 1.5px solid;
   background-color: var(--square-buttons-color);
   box-shadow: inset -2px -2px #3298cb;
+  z-index: 100;
+  cursor: pointer;
 }
 
 /* center buttons */
@@ -642,12 +645,18 @@ input {
 }
 
 .white-square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
   width: 25px;
   height: 25px;
   border-radius: 5px;
   border: black 2px solid;
   background-color: #ffffff;
   box-shadow: inset -2px -2px gray;
+  cursor: pointer;
+  z-index: 100;
 }
 
 .center-right-container {
@@ -714,4 +723,81 @@ input {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.modal-outer {
+  display: grid;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: #7ca9f7c5;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-outer.open {
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.modal-inner {
+  background: linear-gradient(90deg, hsla(40, 94%, 74%, 1) 0%, hsla(60, 89%, 72%, 1) 100%);
+  min-width: 250px;
+  padding: 2rem;
+  min-height: 450px;
+  z-index: 10000;
+  border-radius: 15px;
+  border: 10px solid #e7c30d;
+  overflow: hidden;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+  position: relative;
+}
+
+.card {
+  padding: 0.5rem;
+}
+
+.card-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-title span {
+  color: #fe0065;
+}
+
+.card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 1em;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  border: 10px solid #e7c30d;
+  background-color: #88a288;
+}
+
+.img-container img {
+  width: 100%;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
