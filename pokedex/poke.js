@@ -17,12 +17,13 @@ const outerModal = document.querySelector('[data-modal="outer"]');
 // Find which keys to use and display
 let currentId = 1;
 let currentPokemon;
-
-const catchemAll = pokemon => {
+let HP;
+const catchemAll = (pokemon = 1) => {
 fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then( res => res.json()).then( data => {
     let id = ('00' + data.id).slice(-3);
     currentId = data.id;
     currentPokemon = data;
+    HP = data.base_experience;
     console.log(data);
     imageScreen.style.backgroundImage = `url('https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png')`;
     nameScreen.innerHTML = data.name;
@@ -57,6 +58,7 @@ const incrementPoke = () => {
     } else
     clickSound(song);
     catchemAll(currentId + 1);
+    typeName(currentPokemon.name);
 }
 
 const decrementPoke = () => {
@@ -107,14 +109,18 @@ favoriteButton.addEventListener('click', alert);
 // innerModal - outerModal
 
 const handleModal = (event) => {
+    const id = currentId;
+    hp = HP;
     innerModal.innerHTML = 
     `<div class="card">
         <div class="card-title">
             <h1 class="capitalize">${currentPokemon.name}</h1>
-            <span>${('00' + currentId).slice(-3)}</span>
+            <span>${hp} HP</span>
         </div>
         <div class="card-body">
-            **add image**
+            <div class="img-container">
+                <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/${('00' + id).slice(-3)}.png" alt="A pokemon named: ${currentPokemon.name}">
+            </div>
         </div>
     </div>`;
     outerModal.classList.add('open');
@@ -138,5 +144,6 @@ window.addEventListener('keydown', event => {
         closeModal();
     }
 })
+
 // LocalStorage
 // animate lights
