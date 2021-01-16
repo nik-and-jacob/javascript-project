@@ -52,8 +52,8 @@ const clickSound = (song) => {
 
 const incrementPoke = () => {
     if(currentId === 898){
-        clickSound(errorSound);
         catchemAll(898)
+        clickSound(errorSound);
     } else
     clickSound(song);
     catchemAll(currentId + 1);

@@ -1,0 +1,23 @@
+@keyframes illuminate {
+  0% {
+    background-color: #366df7;
+  }
+  50.0% {
+    background-color: #3298cb;
+  }
+  100.0% {
+    background-color: #366df7;
+  }
+}
+
+@keyframes illuminate-screen {
+  0% {
+    background-color: #32cb65;
+  }
+  50.0% {
+    background-color: #aadaba;
+  }
+  100.0% {
+    background-color: #32cb65;
+  }
+}
