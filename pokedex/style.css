@@ -749,9 +749,9 @@ input {
 
 .modal-inner {
   background: linear-gradient(90deg, hsla(40, 94%, 74%, 1) 0%, hsla(60, 89%, 72%, 1) 100%);
-  min-width: 250px;
-  padding: 2rem;
-  min-height: 450px;
+  max-width: 250px;
+  padding: 1rem;
+  min-height: 350px;
   z-index: 10000;
   border-radius: 15px;
   border: 10px solid #e7c30d;
@@ -790,9 +790,9 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 100%;
   border: 10px solid #e7c30d;
-  background-color: #88a288;
+  background: linear-gradient(90deg, hsla(238, 100%, 71%, 1) 0%, hsla(295, 100%, 84%, 1) 100%);
 }
 
 .img-container img {
@@ -801,4 +801,44 @@ input {
 
 .capitalize {
   text-transform: capitalize;
+}
+
+.fire-gradient {
+  background: hsla(0, 100%, 67%, 1);
+  background: linear-gradient(90deg, hsla(0, 100%, 67%, 1) 0%, hsla(0, 100%, 89%, 1) 100%);
+  background: -moz-linear-gradient(90deg, hsla(0, 100%, 67%, 1) 0%, hsla(0, 100%, 89%, 1) 100%);
+  background: -webkit-linear-gradient(90deg, hsla(0, 100%, 67%, 1) 0%, hsla(0, 100%, 89%, 1) 100%);
+}
+
+.water-gradient {
+  background: hsla(217, 100%, 50%, 1);
+  background: linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+  background: -moz-linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(217, 100%, 50%, 1) 0%,
+    hsla(186, 100%, 69%, 1) 100%
+  );
+}
+
+.grass-gradient {
+  background: hsla(135, 100%, 72%, 1);
+  background: linear-gradient(
+    90deg,
+    hsla(135, 100%, 72%, 1) 0%,
+    hsla(143, 83%, 53%, 1) 46%,
+    hsla(157, 32%, 51%, 1) 100%
+  );
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(135, 100%, 72%, 1) 0%,
+    hsla(143, 83%, 53%, 1) 46%,
+    hsla(157, 32%, 51%, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(135, 100%, 72%, 1) 0%,
+    hsla(143, 83%, 53%, 1) 46%,
+    hsla(157, 32%, 51%, 1) 100%
+  );
 }
