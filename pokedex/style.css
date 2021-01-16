@@ -604,6 +604,8 @@ input {
   border: black 1.5px solid;
   background-color: var(--square-buttons-color);
   box-shadow: inset -2px -2px #3298cb;
+  z-index: 100;
+  cursor: pointer;
 }
 
 /* center buttons */
@@ -642,12 +644,18 @@ input {
 }
 
 .white-square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
   width: 25px;
   height: 25px;
   border-radius: 5px;
   border: black 2px solid;
   background-color: #ffffff;
   box-shadow: inset -2px -2px gray;
+  cursor: pointer;
+  z-index: 100;
 }
 
 .center-right-container {

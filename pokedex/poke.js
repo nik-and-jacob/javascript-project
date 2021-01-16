@@ -9,14 +9,19 @@ const rightBtn = document.getElementById('nav-button-horizontal-right'); // righ
 const leftBtn = document.getElementById('nav-button-horizontal-left'); // left d-pad button 
 const muteBtn = document.getElementById('mute-button'); // mute button 
 const muteLight = document.getElementById('mute-light'); // mute light 
+const favoriteButton = document.getElementById('fav-btn');
+
 
 
 // Find which keys to use and display
 let currentId = 1;
+let currentPokemon;
+
 const catchemAll = pokemon => {
 fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then( res => res.json()).then( data => {
     let id = ('00' + data.id).slice(-3);
     currentId = data.id;
+    currentPokemon = data;
     console.log(data);
     imageScreen.style.backgroundImage = `url('https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png')`;
     nameScreen.innerHTML = data.name;
@@ -87,3 +92,9 @@ muteBtn.addEventListener("click", () => {
 
 // Think of Animations
 
+function alert(e) {
+    console.log(`Adding ${currentPokemon.name} to your favorites`);
+    console.log(e);
+}
+
+favoriteButton.addEventListener('click', alert);
