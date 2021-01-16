@@ -14,6 +14,7 @@ const removeButton = document.getElementById('remove-fav');
 const innerModal = document.querySelector('[data-modal="inner"]');
 const outerModal = document.querySelector('[data-modal="outer"]');
 const favoriteList = [];
+const favoriteOne = document.getElementById('fav1');
 
 // Find which keys to use and display
 let currentId = 1;
@@ -113,6 +114,7 @@ function saveFavorite(e) {
     console.log(`Adding ${currentPokemon.name} to your favorites`);
     favoriteList.push(currentPokemon.name);
     console.table(favoriteList);
+    console.log(favoriteOne.innerHTML = `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentId}.png"`);
 }
 
 function removeFavorite(e) {
@@ -146,7 +148,7 @@ const handleModal = (event) => {
     outerModal.classList.add('open');
 }
 
-const closeModal = (event) => {
+const closeModal = () => {
     outerModal.classList.remove('open');
 }
 
@@ -169,11 +171,13 @@ window.addEventListener('keydown', event => {
 
     if (event.key === 'ArrowRight' && currentId !== 898) {
         catchemAll(currentId + 1);
+        closeModal();
         clickSound(song);
     } 
-
+    
     if (event.key === 'ArrowLeft') {
         catchemAll(currentId - 1);
+        closeModal();
         clickSound(song);
     }
 
