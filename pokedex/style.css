@@ -286,6 +286,7 @@ input {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+  cursor: pointer;
 }
 
 .bottom-screen-lights {
@@ -722,4 +723,46 @@ input {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.modal-outer {
+  display: grid;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: #7ca9f7c5;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-outer.open {
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.modal-inner {
+  background-color: #ffffff;
+  max-width: 40vh;
+  min-width: 30vw;
+  padding: 2rem;
+  min-height: 50vh;
+  z-index: 10000;
+}
+
+.card {
+  padding: 0.5rem;
+}
+
+.card-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

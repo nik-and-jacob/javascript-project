@@ -10,7 +10,8 @@ const leftBtn = document.getElementById('nav-button-horizontal-left'); // left d
 const muteBtn = document.getElementById('mute-button'); // mute button 
 const muteLight = document.getElementById('mute-light'); // mute light 
 const favoriteButton = document.getElementById('fav-btn');
-
+const innerModal = document.querySelector('[data-modal="inner"]');
+const outerModal = document.querySelector('[data-modal="outer"]');
 
 
 // Find which keys to use and display
@@ -90,11 +91,48 @@ muteBtn.addEventListener("click", () => {
     }
 });
 
-// Think of Animations
-
 function alert(e) {
     console.log(`Adding ${currentPokemon.name} to your favorites`);
     console.log(e);
 }
 
 favoriteButton.addEventListener('click', alert);
+
+
+// Open Modal
+// innerModal - outerModal
+
+const handleModal = (event) => {
+    innerModal.innerHTML = 
+    `<div class="card">
+        <div class="card-title">
+            <h1>${currentPokemon.name}</h1>
+            <span>${('00' + currentId).slice(-3)}</span>
+        </div>
+        <div class="card-body">
+            **add image**
+        </div>
+    </div>`;
+    outerModal.classList.add('open');
+}
+
+const closeModal = (event) => {
+    outerModal.classList.remove('open');
+}
+
+imageScreen.addEventListener('click', handleModal);
+
+outerModal.addEventListener('click', event => {
+    const isOutside = !event.target.closest('.modal-inner');
+    if (isOutside) {
+    outerModal.classList.remove('open');
+    }
+});
+
+window.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+})
+// LocalStorage
+// animate lights
