@@ -608,6 +608,12 @@ input {
   box-shadow: inset -2px -2px #3298cb;
   z-index: 100;
   cursor: pointer;
+  display: grid;
+  align-items: center;
+}
+
+.blue-square img {
+  width: 95%;
 }
 
 /* center buttons */

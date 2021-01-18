@@ -14,7 +14,6 @@ const removeButton = document.getElementById('remove-fav');
 const innerModal = document.querySelector('[data-modal="inner"]');
 const outerModal = document.querySelector('[data-modal="outer"]');
 const favoriteList = [];
-const favoriteOne = document.getElementById('fav1');
 
 // Find which keys to use and display
 let currentId = 1;
@@ -109,12 +108,16 @@ muteBtn.addEventListener("click", () => {
 
 // List Favorite Pokemon
 
+
 function saveFavorite(e) {
     clickSound(save);
-    console.log(`Adding ${currentPokemon.name} to your favorites`);
-    favoriteList.push(currentPokemon.name);
-    console.table(favoriteList);
-    console.log(favoriteOne.innerHTML = `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentId}.png"`);
+    // console.log(`Adding ${currentPokemon.name} to your favorites`);
+    favoriteList.push(currentPokemon);
+    // console.table(favoriteList);
+    // favoriteOne.innerHTML = `<img src="${currentPokemon.sprites.front_default}" alt="${currentPokemon}">`
+    for (let i = 0; i <= favoriteList.length - 1; i++) {
+        document.getElementById('fav' + i).innerHTML = `<img src="${favoriteList[i].sprites.front_default}" alt="${currentPokemon}">`;
+    }
 }
 
 function removeFavorite(e) {
@@ -122,6 +125,7 @@ function removeFavorite(e) {
     console.log(`Removing ${currentPokemon.name} from your favorites`);
     favoriteList.pop(currentPokemon.name);
     console.table(favoriteList);
+    favoriteOne.innerHTML = '';
 }
 
 favoriteButton.addEventListener('click', saveFavorite);
