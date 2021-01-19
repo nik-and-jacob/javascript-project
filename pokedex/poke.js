@@ -111,10 +111,7 @@ muteBtn.addEventListener("click", () => {
 
 function saveFavorite(e) {
     clickSound(save);
-    // console.log(`Adding ${currentPokemon.name} to your favorites`);
     favoriteList.push(currentPokemon);
-    // console.table(favoriteList);
-    // favoriteOne.innerHTML = `<img src="${currentPokemon.sprites.front_default}" alt="${currentPokemon}">`
     for (let i = 0; i <= favoriteList.length - 1; i++) {
         document.getElementById('fav' + i).innerHTML = `<img src="${favoriteList[i].sprites.front_default}" alt="${currentPokemon}">`;
     }
