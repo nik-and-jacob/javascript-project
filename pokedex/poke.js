@@ -84,23 +84,27 @@ rightBtn.addEventListener("click", () => incrementPoke());
 leftBtn.addEventListener("click", () => decrementPoke());
 
 // MUTE FUNCTIONALITY
-const mute = (sound1, sound2) => {
+const mute = (sound1, sound2, sound3, sound4) => {
     sound1.muted = true;
     sound2.muted = true;
+    sound3.muted = true;
+    sound4.muted = true;
 };
 
-const unmute = (sound1, sound2) => {
+const unmute = (sound1, sound2, sound3, sound4) => {
         sound1.muted = false;
         sound2.muted = false;
+        sound3.muted = false;
+        sound4.muted = false;
 };
 
 muteBtn.addEventListener("click", () => {
-    if(song.muted === true || errorSound.muted === true){
-        unmute(song, errorSound);
+    if(song.muted === true || errorSound.muted === true || save.muted === true||  toss.muted === true){
+        unmute(song, errorSound, save, toss);
         muteLight.classList.add('light-red');
         muteLight.classList.remove('red')
     }else{
-        mute(song, errorSound);
+        mute(song, errorSound, save, toss);
         muteLight.classList.add('red');
         muteLight.classList.remove('light-red')
     }
