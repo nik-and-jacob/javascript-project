@@ -13,7 +13,9 @@ const favoriteButton = document.getElementById('fav-btn');
 const removeButton = document.getElementById('remove-fav');
 const innerModal = document.querySelector('[data-modal="inner"]');
 const outerModal = document.querySelector('[data-modal="outer"]');
-const favoriteList = JSON.parse(localStorage.getItem('favoriteList'));
+const favoriteList = JSON.parse(localStorage.getItem('favoriteList')) || [];
+
+
 
 // Find which keys to use and display
 let currentId = 1;
