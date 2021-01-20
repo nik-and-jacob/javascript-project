@@ -13,7 +13,7 @@ const favoriteButton = document.getElementById('fav-btn');
 const removeButton = document.getElementById('remove-fav');
 const innerModal = document.querySelector('[data-modal="inner"]');
 const outerModal = document.querySelector('[data-modal="outer"]');
-const favoriteList = [];
+const favoriteList = JSON.parse(localStorage.getItem('favoriteList'));
 
 // Find which keys to use and display
 let currentId = 1;
@@ -111,15 +111,23 @@ muteBtn.addEventListener("click", () => {
 });
 
 // List Favorite Pokemon
-
-
-function saveFavorite(e) {
-    clickSound(save);
-    favoriteList.push(currentPokemon);
+function displayFavorites() {
     for (let i = 0; i <= favoriteList.length - 1; i++) {
         document.getElementById('fav' + i).innerHTML = `<img src="${favoriteList[i].sprites.front_default}" alt="${currentPokemon}">`;
     }
 }
+
+displayFavorites();
+
+function saveFavorite(e) {
+    clickSound(save);
+    favoriteList.push(currentPokemon);
+    localStorage.setItem("favoriteList", JSON.stringify(favoriteList));
+    displayFavorites();
+}
+
+
+JSON.parse(localStorage.getItem('favoriteList[i].sprites.front_default'));
 
 function removeFavorite(e) {
     clickSound(toss);
