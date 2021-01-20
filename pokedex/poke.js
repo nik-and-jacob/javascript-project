@@ -116,7 +116,6 @@ function displayFavorites() {
         document.getElementById('fav' + i).innerHTML = `<img src="${favoriteList[i].sprites.front_default}" alt="${currentPokemon}">`;
     }
 }
-
 displayFavorites();
 
 function saveFavorite(e) {
