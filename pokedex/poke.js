@@ -124,9 +124,13 @@ displayFavorites();
 
 function saveFavorite(e) {
     clickSound(save);
-    favoriteList.push(currentPokemon);
-    localStorage.setItem("favoriteList", JSON.stringify(favoriteList));
-    displayFavorites();
+    if(favoriteList.length >= 10){
+        alert("Your favorites are full! You can delete a Pokemon to make room.")
+    }else{
+        favoriteList.push(currentPokemon);
+        localStorage.setItem("favoriteList", JSON.stringify(favoriteList));
+        displayFavorites();
+    }
 }
 
 let selectedPokemon;
