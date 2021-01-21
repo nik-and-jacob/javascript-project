@@ -13,9 +13,8 @@ const favoriteButton = document.getElementById('fav-btn');
 const removeButton = document.getElementById('remove-fav');
 const innerModal = document.querySelector('[data-modal="inner"]');
 const outerModal = document.querySelector('[data-modal="outer"]');
-const favoriteList = JSON.parse(localStorage.getItem('favoriteList')) || [];
-
-
+let favoriteList = JSON.parse(localStorage.getItem('favoriteList')) || [];
+const blueSquare = document.querySelectorAll('.blue-square');
 
 // Find which keys to use and display
 let currentId = 1;
@@ -127,15 +126,21 @@ function saveFavorite(e) {
     displayFavorites();
 }
 
+let selectedPokemon;
 
-JSON.parse(localStorage.getItem('favoriteList[i].sprites.front_default'));
+blueSquare.forEach(square => square.addEventListener('click', (e) => {
+    console.log(e.currentTarget.innerHTML);
+}))
 
 function removeFavorite(e) {
+    // Check if button is the current target.
+    // Match contents to remove from local storage
+
+    // Remove from local storage and the array
+    id = currentId;
+    favoriteList = newFavoriteList = favoriteList.findIndex(pokemon => pokemon.id !== id);
     clickSound(toss);
-    console.log(`Removing ${currentPokemon.name} from your favorites`);
     favoriteList.pop(currentPokemon.name);
-    console.table(favoriteList);
-    favoriteOne.innerHTML = '';
 }
 
 favoriteButton.addEventListener('click', saveFavorite);
