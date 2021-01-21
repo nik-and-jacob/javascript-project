@@ -137,7 +137,9 @@ let selectedPokemon;
 
 blueSquare.forEach(square => square.addEventListener('click', (e) => {
     selectedPokemon = e.currentTarget.id;
-    console.log(selectedPokemon);
+    let substr = e.currentTarget.innerHTML;
+    let id = substr.slice(83, substr.lastIndexOf('.'));
+    catchemAll(id);
 }))
 
 function removeFavorite(e) {
@@ -146,7 +148,6 @@ function removeFavorite(e) {
     // Remove from local storage and the array
     clickSound(toss);
     favoriteList.splice(selectedPokemon, 1)
-    console.log(favoriteList)
     localStorage.setItem("favoriteList", JSON.stringify(favoriteList));
     displayFavorites();
 }
