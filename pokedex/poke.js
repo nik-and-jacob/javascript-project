@@ -139,6 +139,7 @@ blueSquare.forEach(square => square.addEventListener('click', (e) => {
     let substr = e.currentTarget.innerHTML;
     let id = substr.slice(83, substr.lastIndexOf('.'));
     catchemAll(id);
+    clickSound(song);
 }))
 
 function removeFavorite(e) {
