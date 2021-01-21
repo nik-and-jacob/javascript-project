@@ -27,7 +27,6 @@ fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then( res => res.json()).t
     currentId = data.id;
     currentPokemon = data;
     HP = data.base_experience;
-    console.log(data);
     imageScreen.style.backgroundImage = `url('https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png')`;
     nameScreen.innerHTML = data.name;
     typeScreen.innerHTML = data.types[0].type.name;
