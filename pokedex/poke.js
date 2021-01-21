@@ -123,8 +123,11 @@ displayFavorites();
 
 function saveFavorite(e) {
     clickSound(save);
+    const found = favoriteList.some(el => el.name === currentPokemon.name);
     if(favoriteList.length >= 10){
         alert("Your favorites are full! You can delete a Pokemon to make room.")
+    }else if(found){
+        alert('You already have that Pokemon!')
     }else{
         favoriteList.push(currentPokemon);
         localStorage.setItem("favoriteList", JSON.stringify(favoriteList));
