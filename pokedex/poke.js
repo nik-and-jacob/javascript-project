@@ -113,8 +113,11 @@ muteBtn.addEventListener("click", () => {
 
 // List Favorite Pokemon
 function displayFavorites() {
+    for(let j = 0; j <= 9; j++){
+        document.getElementById(j).innerHTML = "";
+    }
     for (let i = 0; i <= favoriteList.length - 1; i++) {
-        document.getElementById('fav' + i).innerHTML = `<img src="${favoriteList[i].sprites.front_default}" alt="${currentPokemon}">`;
+        document.getElementById(i).innerHTML = `<img src="${favoriteList[i].sprites.front_default}" alt="${currentPokemon}">`;
     }
 }
 displayFavorites();
@@ -129,18 +132,19 @@ function saveFavorite(e) {
 let selectedPokemon;
 
 blueSquare.forEach(square => square.addEventListener('click', (e) => {
-    console.log(e.currentTarget.innerHTML);
+    selectedPokemon = e.currentTarget.id;
+    console.log(selectedPokemon);
 }))
 
 function removeFavorite(e) {
     // Check if button is the current target.
     // Match contents to remove from local storage
-
     // Remove from local storage and the array
-    id = currentId;
-    favoriteList = newFavoriteList = favoriteList.findIndex(pokemon => pokemon.id !== id);
     clickSound(toss);
-    favoriteList.pop(currentPokemon.name);
+    favoriteList.splice(selectedPokemon, 1)
+    console.log(favoriteList)
+    localStorage.setItem("favoriteList", JSON.stringify(favoriteList));
+    displayFavorites();
 }
 
 favoriteButton.addEventListener('click', saveFavorite);
