@@ -141,8 +141,10 @@ blueSquare.forEach(square => square.addEventListener('click', (e) => {
     selectedPokemon = e.currentTarget.id;
     let substr = e.currentTarget.innerHTML;
     let id = substr.slice(83, substr.lastIndexOf('.'));
-    catchemAll(id);
-    clickSound(song);
+    if(substr !== ""){
+        catchemAll(id);
+        clickSound(song);
+    }
 }))
 
 function removeFavorite(e) {
