@@ -137,7 +137,8 @@ function saveFavorite(e) {
 
 let selectedPokemon;
 
-blueSquare.forEach(square => square.addEventListener('click', (e) => {
+blueSquare.forEach(square => { 
+    square.addEventListener('click', (e) => {
     selectedPokemon = e.currentTarget.id;
     let substr = e.currentTarget.innerHTML;
     let id = substr.slice(83, substr.lastIndexOf('.'));
@@ -145,7 +146,8 @@ blueSquare.forEach(square => square.addEventListener('click', (e) => {
         catchemAll(id);
         clickSound(song);
     }
-}))
+    })
+});
 
 function removeFavorite(e) {
     // Check if button is the current target.
@@ -184,6 +186,7 @@ const handleModal = (event) => {
 const closeModal = () => {
     outerModal.classList.remove('open');
 }
+
 
 imageScreen.addEventListener('click', handleModal);
 
